@@ -1,10 +1,10 @@
 .plan-table-container {
-  max-height: 70vh;
+  max-height: 88vh;
 
 }
 
 .MuiTable-root {
-  background-color: #f0f0f0;
+  /* background-color: #f0f0f0; */
 
 }
 
@@ -15,7 +15,7 @@
 }
 
 .MuiTableCell-head {
-  background-color: var(--color-quaternary) !important;
+  /* background-color: var(--color-quaternary) !important; */
   /* Ensure header background color is applied */
   color: var(--color-secondary) !important;
   /* Text color for header */
@@ -40,7 +40,7 @@
 }
 
 .MuiTableBody-root .MuiTableRow-root:nth-of-type(odd) {
-  background-color: #f9f9f9;
+  /* background-color: #f9f9f9; */
 }
 
 .MuiCheckbox-root {

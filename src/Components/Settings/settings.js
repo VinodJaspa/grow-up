@@ -1,38 +1,33 @@
-import React from 'react';
-import "./settings.css"
-import { Switch } from '@mui/material';
+import React, { useState } from 'react';
+import './settings.css';
+import Switch from '@mui/material/Switch';
 import { setTheme } from '../../Redux/store';
 import { useDispatch, useSelector } from 'react-redux';
-import { useState } from "react";
+
 const Settings = ({ setFont }) => {
-    const [isChecked, setChecked] = useState(false);
-    const dispatch = useDispatch()
-    const handleFontChange = (e) => {
-        setFont(e.target.value);
-
-    };
-
+    const themeState = useSelector(state => state.theme);
+    const [isChecked, setChecked] = useState(themeState === 'dark'); // Initialize isChecked based on themeState
+    const dispatch = useDispatch();
 
     const handleChange = (event) => {
-        
-        if (event.target.checked) {
-            dispatch(setTheme('dark'));
 
-        } else {
-            dispatch(setTheme('light'));
+        const isChecked = event.target.checked;
+        setChecked(isChecked);
+        dispatch(setTheme(isChecked ? 'dark' : 'light')); // Dispatch action based on isChecked
+    };
 
-        }
-        setChecked(event.target.checked);
+    const handleFontChange = (e) => {
+        setFont(e.target.value);
+    };
 
-    }
     return (
         <div className="settings">
-
             <label>Dark Mode</label>
             <Switch
                 checked={isChecked}
                 color='success'
-                onChange={handleChange} />
+                onChange={handleChange}
+            />
             <label htmlFor="font">Select Font:</label>
             <select id="font" onChange={handleFontChange}>
                 <option value="sans-serif">Sans-serif</option>

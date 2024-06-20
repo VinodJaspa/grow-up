@@ -4,8 +4,8 @@
   top: 0;
   height: 100%;
   width: 200px;
-  background-color:var(--color-tertiary);
-  color:var(--color-secondary);
+  /* background-color:var(--color-tertiary); */
+  /* color:var(--color-secondary); */
   padding-top: 50px;
   transition: transform 0.3s ease;
   z-index: 9999;
@@ -21,7 +21,8 @@
   width:0px;
 }
 .menu-btn {
-   background-color:var(--color-tertiary);
+   /* background-color:var(--color-tertiary); */
+   
 
   height: 45px;
   vertical-align: center;
@@ -40,9 +41,10 @@
   padding: 5px 10px;
 }
 
-.navbar ul li a:hover {
-  background-color: var(--color-secondary);
-}
+
+
+
+
 
 .toggle-btn {
   position: absolute;
@@ -62,12 +64,56 @@
   background: none;
   border: none;
   color: var(--color-secondary);
- background-color: var(--color-tertiary);
+ /* background-color: var(--color-tertiary); */
   font-size: 1.5rem;
   cursor: pointer;
 }
 .navbar ul li a .icon {
   margin-right: 10px;
+}
+/* For light theme */
+.navbar.light-theme ul li {
+  border-radius: 8px; /* Border radius for navigation links in light theme */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Box shadow for navigation links in light theme */
+}
+
+/* For dark theme */
+.navbar.dark-theme ul li {
+  border-radius: 8px; 
+  box-shadow: 0 2px 4px rgba(255, 255, 255, 0.1); 
+}
+
+/* Hover styles for light theme */
+.navbar.light-theme ul li:hover {
+  background-color: #f0f0f0; /* Change background color on hover for light theme */
+  color: #333; /* Change text color on hover for light theme */
+}
+
+/* Hover styles for dark theme */
+.navbar.dark-theme ul li:hover {
+  background-color: #333; /* Change background color on hover for dark theme */
+  color: #fff; /* Change text color on hover for dark theme */
+}
+
+/* Active styles for light theme */
+.navbar.light-theme ul li.active {
+  background-color: #007bff; 
+  color: #fff; 
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5); 
+}
+
+/* Active styles for dark theme */
+.navbar.dark-theme ul li.active {
+  background-color: #0f1011; 
+  color: #fff; 
+  box-shadow: 0 0 5px rgba(13, 110, 253, 0.5); 
+}
+.made-with-love {
+  position: absolute;
+  bottom: 10px;
+  left: 40%;
+  transform: translateX(-50%);
+  font-size: 12px;
 }
 
 @media (max-width: 768px) {

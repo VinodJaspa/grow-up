@@ -15,6 +15,7 @@ import Settings from './Components/Settings/settings';
 import { ThemeProvider, createTheme } from '@mui/material/styles'
 
 import CssBaseline from '@mui/material/CssBaseline'
+import { darkTheme, lightTheme } from './Theme/theme';
 function App() {
 
   const dispatch = useDispatch()
@@ -25,26 +26,18 @@ function App() {
   };
   const themeState = useSelector(state => state.theme);
   const [themeMode, setThemeMode] = useState(themeState);
-
-console.log(themeMode,"mode____");
-
+  const [user, setUser] = useState(null);
   React.useEffect(() => {
-    const darkTheme = createTheme({
-      palette: {
-        mode: themeMode,
-      },
-    });
 
-    setDarkTheme(darkTheme);
-  }, [themeMode]);
+    setThemeMode(themeState);
 
-  const [darkTheme, setDarkTheme] = useState(() =>
-    createTheme({
-      palette: {
-        mode: themeMode,
-      },
-    })
-  );
+    return () => {
+
+    }
+  }, [themeState])
+
+
+console.log(themeMode ,"mode");
 
   const plan = useSelector(state => state.plan);
   // App.js or main component
@@ -52,13 +45,29 @@ console.log(themeMode,"mode____");
     Notification.requestPermission();
   }, []);
 
+  React.useEffect(() => {
+    const unsubscribe = auth.onAuthStateChanged((authUser) => {
+      if (authUser) {
+        // User is logged in
+        setUser(authUser);
+      } else {
+        // User is logged out
+        setUser(null);
+      }
+    });
+
+    return () => {
+      unsubscribe();
+    };
+  }, []);
+
   return (
 
     <Router>
       <div className="App">
-        <ThemeProvider theme={darkTheme}>
+      <ThemeProvider theme={themeMode === 'dark' ? darkTheme: lightTheme}>
           <CssBaseline />
-          <Navbar />
+          <Navbar themeMode={themeMode} />
 
           {plan.length === 0 ? (
             <button onClick={createPlan}>Create 30-Day Plan</button>
