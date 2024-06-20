@@ -16,6 +16,7 @@ import { ThemeProvider, createTheme } from '@mui/material/styles'
 
 import CssBaseline from '@mui/material/CssBaseline'
 import { darkTheme, lightTheme } from './Theme/theme';
+import { auth } from './Firebase/firebaseConfig';
 function App() {
 
   const dispatch = useDispatch()
