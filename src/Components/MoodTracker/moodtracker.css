@@ -1,0 +1,52 @@
+.mood-tracker {
+    margin: 20px 0;
+  }
+  
+  .mood-tracker-item {
+    display: flex;
+    align-items: center;
+    margin: 10px 0;
+  }
+  
+  .mood-tracker-item label {
+    flex: 1;
+  }
+  
+  .mood-tracker-item select {
+    flex: 2;
+    padding: 5px;
+  }.mood-tracker {
+    padding: 20px;
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    margin: 20px 0;
+  }
+  
+  .mood-tracker h2 {
+    margin-bottom: 20px;
+  }
+  
+  .mood-tracker-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+  
+  .mood-tracker-item label {
+    flex: 1;
+    margin-right: 10px;
+  }
+  
+  .mood-tracker-item select {
+    flex: 2;
+    padding: 5px;
+  }
+  
+  .mood-tracker-item.card {
+    border: 1px solid #ccc;
+    padding: 16px;
+    margin: 8px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  }
+  

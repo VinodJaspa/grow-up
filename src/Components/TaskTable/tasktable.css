@@ -1,0 +1,78 @@
+.plan-table-container {
+  max-height: 70vh;
+
+}
+
+.MuiTable-root {
+  background-color: #f0f0f0;
+
+}
+
+.MuiTableCell-root {
+  white-space: nowrap;
+  text-align: center;
+  /* Center align text in all cells */
+}
+
+.MuiTableCell-head {
+  background-color: var(--color-quaternary) !important;
+  /* Ensure header background color is applied */
+  color: var(--color-secondary) !important;
+  /* Text color for header */
+  position: sticky !important;
+  top: 0 !important;
+  /* Fix header to top */
+  z-index: 999 !important;
+  text-align: center !important;
+  /* Center align text in header cells */
+
+}
+
+.MuiTableCell-head .MuiTableSortLabel-root {
+  text-align: center;
+  /* Center align text in sort labels if needed */
+}
+
+.MuiTableCell-head,
+.MuiTableCell-body {
+  vertical-align: middle;
+  padding-right: 4px;
+}
+
+.MuiTableBody-root .MuiTableRow-root:nth-of-type(odd) {
+  background-color: #f9f9f9;
+}
+
+.MuiCheckbox-root {
+  padding: 0;
+}
+
+.MuiIconButton-root {
+  padding: 0;
+  margin-left: 8px;
+  color: red;
+}
+
+.task-cell {
+  display: flex;
+  align-items: center;
+
+}
+
+.task-cell span {
+  margin-left: 8px;
+  flex-grow: 1;
+}
+
+@media (max-width: 768px) {
+  .plan-table-container .MuiTableCell-root {
+    padding: 8px;
+  }
+}
+
+@media (max-width: 576px) {
+  .plan-table-container .MuiTableCell-root {
+    padding: 4px;
+    font-size: 14px;
+  }
+}

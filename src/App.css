@@ -1,0 +1,16 @@
+
+/* colors.css */
+:root {
+  --color-primary: #FF6969;
+  --color-secondary: #FFD0D0;
+  --color-tertiary: #C80036;
+  --color-quaternary: #0C1844;
+}
+/* Apply Open Sans to all elements */
+* {
+  font-family: 'Pacifico', cursive;
+}
+
+body {
+  font-family: 'Pacifico', cursive;
+}

@@ -1,0 +1,12 @@
+{
+    "rules": {
+      "no-restricted-globals": [
+        "error",
+        {
+          "name": "self",
+          "message": "Use 'self' in service workers"
+        }
+      ]
+    }
+  }
+  
