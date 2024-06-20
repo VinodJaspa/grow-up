@@ -2,7 +2,7 @@ import { configureStore, createSlice } from '@reduxjs/toolkit';
 import { persistStore, persistReducer } from 'redux-persist';
 import storage from 'redux-persist/lib/storage'; // defaults to localStorage for web
 import { combineReducers } from 'redux';
-
+import authReducer from './userSlice';
 // Initial states
 const initialPlan = [];
 const initialMoodData = Array(30).fill(''); // 30-day mood data initialized to empty
@@ -60,6 +60,7 @@ const rootReducer = combineReducers({
   plan: planSlice.reducer,
   mood: moodSlice.reducer,
   theme: themeSlice.reducer,
+  auth: authReducer,
 });
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);
