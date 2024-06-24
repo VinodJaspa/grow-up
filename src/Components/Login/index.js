@@ -17,25 +17,25 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import Copyright from '../CopyRight/copyRight';
 import { loginUser } from '../../Redux/userSlice';
+import authMessages from '../../Comman/authMessages';
+import { setUniversalMessage } from '../../Redux/firestoreMessage';
 
 function SignInSide() {
   const dispatch = useDispatch();
-  const { loading, error } = useSelector((state) => state.auth); // Update auth state
-  console.log(loading, "loading__");
+  const { loading } = useSelector((state) => state.loadingState);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
   const handleSubmit = (event) => {
     event.preventDefault();
-
     // Basic validation
     if (!email.trim()) {
-      alert('Email is required.');
+      dispatch(setUniversalMessage({ message: authMessages.emailRequired, isSuccess: false }))
       return;
     }
 
     if (!password.trim()) {
-      alert('Password is required.');
+      dispatch(setUniversalMessage({ message: authMessages.passwordRequired, isSuccess: false }))
       return;
     }
     const san_email = email.trim() // Correct: String
@@ -118,11 +118,7 @@ function SignInSide() {
               >
                 {loading ? 'Signing In...' : 'Sign In'}
               </Button>
-              {error && (
-                <Typography variant="body2" color="error" align="center">
-                  {error}
-                </Typography>
-              )}
+
               <Grid container>
                 <Grid item xs>
                   <Link href="#" variant="body2">

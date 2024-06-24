@@ -21,7 +21,7 @@ const analytics = getAnalytics(app);
 
 // Initialize Authentication and Firestore
 const auth = getAuth(app);
-const firestore = getFirestore(app);
+const firestoreDb = getFirestore(app);
 
 // Export the initialized instances
-export { app, analytics, auth, firestore };
+export { app, analytics, auth, firestoreDb };

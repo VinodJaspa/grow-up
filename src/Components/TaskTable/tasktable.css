@@ -15,7 +15,7 @@
 }
 
 .MuiTableCell-head {
-  /* background-color: var(--color-quaternary) !important; */
+  /* background-color: var(--color-text-light-theme) !important; */
   /* Ensure header background color is applied */
   color: var(--color-secondary) !important;
   /* Text color for header */

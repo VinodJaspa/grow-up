@@ -1,7 +1,6 @@
 import { createTheme } from "@mui/material";
 
-// Dark mode theme with adjusted navbar background color using !important
-export const darkTheme = createTheme({
+const getDarkTheme = (fontStyle) => createTheme({
   palette: {
     mode: 'dark',
     primary: {
@@ -11,18 +10,26 @@ export const darkTheme = createTheme({
       main: '#495057',
     },
     background: {
-      default: '#212529 !important', // Adjust the default background color for dark mode
-      paper: '#333 !important', // Adjust the background color for paper elements in dark mode
-      navbar: '#333', // Adjust the navbar background color in dark mode
+      default: '#212529 !important',
+      paper: '#333 !important',
+      navbar: '#333 !important',
+   
     },
+    button: {
+      backgroundColor:'#0C1844 !important',
+     },
     text: {
-      primary: '#fff !important', // Adjust the text color for better readability
+      primary: '#fff !important',
     },
+  },
+  typography: {
+    fontFamily: fontStyle.fontFamily,
+    fontSize:fontStyle.fontSize
+
   },
 });
 
-// Light mode theme with adjusted navbar background color using !important
-export const lightTheme = createTheme({
+const getLightTheme = (fontStyle) => createTheme({
   palette: {
     mode: 'light',
     primary: {
@@ -32,12 +39,22 @@ export const lightTheme = createTheme({
       main: '#6c757d',
     },
     background: {
-      default: '#fff !important', // Adjust the default background color for light mode
-      paper: '#f8f9fa !important', // Adjust the background color for paper elements in light mode
-      navbar: '#f8f9fa', // Adjust the navbar background color in light mode
+      default: '#fff !important',
+      paper: '#f8f9fa !important',
+      navbar: '#f8f9fa',
+     
+
     },
     text: {
-      primary: '#333 !important', // Adjust the text color for better readability
+      primary: '#333 !important',
     },
+       button: {
+        backgroundColor:'#0C1844 !important',
+       }
+  },
+  typography: {
+    fontFamily: fontStyle.fontFamily,
+    fontSize:fontStyle.fontSize
   },
 });
+export {getDarkTheme , getLightTheme}

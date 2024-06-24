@@ -4,12 +4,12 @@
   top: 0;
   height: 100%;
   width: 200px;
-  /* background-color:var(--color-tertiary); */
-  /* color:var(--color-secondary); */
+
   padding-top: 50px;
   transition: transform 0.3s ease;
   z-index: 9999;
-  overflow-y: auto; /* Add scrollbars if content exceeds height */
+  overflow-y: auto;
+  /* Add scrollbars if content exceeds height */
 }
 
 .navbar ul {
@@ -17,24 +17,25 @@
   padding: 0;
   margin: 0;
 }
-.closed{
-  width:0px;
-}
-.menu-btn {
-   /* background-color:var(--color-tertiary); */
-   
 
-  height: 45px;
-  vertical-align: center;
+.closed {
+  width: 0px;
 }
+
+.menu-btn {
+  background-color: var(--color-nav-bglight-theme);
+  height: 45px;
+
+}
+
 .navbar ul li {
   padding: 10px 0;
   text-align: center;
 }
 
 .navbar ul li a {
-  color: var(--color-quaternary);
-  /* background-color: var(--color-quaternary); */
+  color: var(--color-text-light-theme);
+  /* background-color: var(--color-text-light-theme); */
   text-decoration: none;
   display: block;
   text-align: start;
@@ -52,7 +53,7 @@
   left: 10px;
   background: none;
   border: none;
-  color: var(--color-secondary);
+  color: var(--color-icon-light-theme);
   font-size: 1.5rem;
   cursor: pointer;
 }
@@ -63,51 +64,61 @@
   right: 1px;
   background: none;
   border: none;
-  color: var(--color-secondary);
- /* background-color: var(--color-tertiary); */
+  color: var(--color-icon-light-theme);
+  /* background-color: var(--color-nav-bglight-theme); */
   font-size: 1.5rem;
   cursor: pointer;
 }
+
 .navbar ul li a .icon {
   margin-right: 10px;
 }
+
 /* For light theme */
 .navbar.light-theme ul li {
-  border-radius: 8px; /* Border radius for navigation links in light theme */
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Box shadow for navigation links in light theme */
+  border-radius: 8px;
+  /* Border radius for navigation links in light theme */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  /* Box shadow for navigation links in light theme */
 }
 
 /* For dark theme */
 .navbar.dark-theme ul li {
-  border-radius: 8px; 
-  box-shadow: 0 2px 4px rgba(255, 255, 255, 0.1); 
+  border-radius: 8px;
+
+  box-shadow: 0 2px 4px rgba(255, 255, 255, 0.1);
 }
 
 /* Hover styles for light theme */
 .navbar.light-theme ul li:hover {
-  background-color: #f0f0f0; /* Change background color on hover for light theme */
-  color: #333; /* Change text color on hover for light theme */
+  background-color: #f0f0f0;
+  /* Change background color on hover for light theme */
+  color: #333;
+  /* Change text color on hover for light theme */
 }
 
 /* Hover styles for dark theme */
 .navbar.dark-theme ul li:hover {
-  background-color: #333; /* Change background color on hover for dark theme */
-  color: #fff; /* Change text color on hover for dark theme */
+  background-color: #333;
+  /* Change background color on hover for dark theme */
+  color: #fff;
+  /* Change text color on hover for dark theme */
 }
 
 /* Active styles for light theme */
 .navbar.light-theme ul li.active {
-  background-color: #007bff; 
-  color: #fff; 
-  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5); 
+  background-color: #007bff;
+  color: #fff;
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
 }
 
 /* Active styles for dark theme */
 .navbar.dark-theme ul li.active {
-  background-color: #0f1011; 
-  color: #fff; 
-  box-shadow: 0 0 5px rgba(13, 110, 253, 0.5); 
+  background-color: #0f1011;
+  color: #fff;
+  box-shadow: 0 0 5px rgba(13, 110, 253, 0.5);
 }
+
 .made-with-love {
   position: absolute;
   bottom: 10px;
@@ -116,8 +127,21 @@
   font-size: 12px;
 }
 
+.navbar.dark-theme {
+  background-color: #333 !important;
+
+}
+
+.navbar.light-theme {
+  background-color: var(--color-nav-bglight-theme) !important;
+}
+
+.made-with-love {
+  color: var(--color-secondary)
+}
+
 @media (max-width: 768px) {
-  
+
 
   .navbar ul li a .icon {
     font-size: 2rem;

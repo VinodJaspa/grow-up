@@ -1,31 +1,42 @@
-import React from 'react';
-import { Route, Routes, Navigate, Router, BrowserRouter } from 'react-router-dom';
+import React, { Suspense, useEffect } from 'react';
+import { Route, Routes, Navigate, BrowserRouter as Router, Outlet, useLocation } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import SignUp from './Components/SignUp/signUp';
-import SignIn from './Components/Login';
-import Navbar from './Components/NavBar/nav-bar';
+import BouncingDotsLoader from "./Components/BouncingLoader/bouncingLoader";
 import Home from './Components/Home/home';
-
-
+import Navbar from './Components/NavBar/nav-bar';
 
 // Lazy loading for components
 const TaskTable = React.lazy(() => import('./Components/TaskTable/task-table'));
 const PerformanceGraph = React.lazy(() => import('./Components/PerfromanceChart/performance-graph'));
 const MoodTracker = React.lazy(() => import('./Components/MoodTracker/mood-tracker'));
 const ChallengesTabs = React.lazy(() => import('./Pages/challengesTab'));
-const Settings = React.lazy(() => import('./Components/Settings/settings'));
+const SignUp = React.lazy(() => import('./Components/SignUp/signUp'));
+const SignIn = React.lazy(() => import('./Components/Login'));
+
 
 
 const AppRoutes = ({ themeMode }) => {
-  const user = useSelector(state => state.auth);
+  const { user } = useSelector(state => state.auth);
   const navigate = useNavigate();
+  const location = useLocation();
 
-  // Private Route Logic
-  const PrivateRoute = ({ element: Element, ...rest }) => {
 
-    return <Element {...rest} />;
-  };
+
+
+  console.log(user,"user");
+ useEffect(() => {
+   if(location.pathname === '/login' || location.pathname === '/signup'  && user){
+    navigate("/")
+   }
+   
+   return () => {
+     
+   }
+ }, [user]);
+ 
+ 
+ 
   const AuthRoutes = () => (
     <Routes>
       <Route element={<PrivateLayout themeMode={themeMode} />}>
@@ -34,47 +45,39 @@ const AppRoutes = ({ themeMode }) => {
         <Route path="/graph" element={<PrivateRoute element={<PerformanceGraph />} />} />
         <Route path="/mood" element={<PrivateRoute element={<MoodTracker />} />} />
         <Route path="/growth" element={<PrivateRoute element={<ChallengesTabs />} />} />
-        <Route path="/settings" element={<PrivateRoute element={<Settings />} />} />
       </Route>
     </Routes>
-
   );
 
   const PublicRoutes = () => (
     <Routes>
-      {/* Public routes */}
       <Route path="/signup" element={<SignUp />} />
       <Route path="/login" element={<SignIn />} />
-
+      <Route path="*" element={<Navigate to="/login" />} />
     </Routes>
   );
-  React.useEffect(() => {
-    if (user) {
-      navigate('/');
-    }
-
-  }, [user])
-
-
-
-  return (
-
-    <>
-      {user ? <AuthRoutes /> : <PublicRoutes />}
-    </>
-  )
+ //Chek if user id logged in or not
+ const PrivateRoute = ({ element }) => {
+  return user ? element : <Navigate to="/login" />
 };
 
-const PrivateLayout = ({ children, themeMode }) => {
+
+
+  const PrivateLayout = ({ themeMode, }) => {
+    return (
+      <>
+        <Navbar themeMode={themeMode} />
+        <Outlet />
+      </>
+    );
+  };
 
   return (
-    <>
-      <Navbar themeMode={themeMode} />
-      {children}
-    </>
+    <Suspense fallback={<BouncingDotsLoader />}>
+      {user ? <AuthRoutes /> : <PublicRoutes />}
+    </Suspense>
   );
 };
-
 
 
 export default AppRoutes;
